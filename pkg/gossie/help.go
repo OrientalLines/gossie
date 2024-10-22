@@ -95,10 +95,16 @@ func printCommandHelp(cmd *Command) {
 
 	if len(cmd.subcommands) > 0 {
 		printSubHeader("Subcommands:")
-		for name, subCmd := range cmd.subcommands {
-			fmt.Printf("  %s%s%s%-15s%s %s\n", colorBold, colorBlue, name, "", colorReset, subCmd.description)
+		maxNameLen := 0
+		for name := range cmd.subcommands {
+			if len(name) > maxNameLen {
+				maxNameLen = len(name)
+			}
 		}
-		fmt.Printf("\nUse \"%s %s <SUBCOMMAND> --help\" for more information about a specific subcommand.\n", cmd.app.name, cmd.name)
+		for name, subCmd := range cmd.subcommands {
+			fmt.Printf("  %s%s%-*s%s    %s\n", colorBold, colorBlue, maxNameLen, name, colorReset, subCmd.description)
+		}
+		fmt.Printf("\nUse \"%s %s <SUBCOMMAND> --help\" for more information about a specific subcommand.\n", filepath.Base(os.Args[0]), cmd.name)
 	}
 
 	printSubHeader("Global Flags:")

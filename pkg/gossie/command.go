@@ -8,10 +8,6 @@ type Command struct {
 	name        string
 	description string
 	usage       string
-	author      string
-	version     string
-	shortName   rune
-	help        string
 	action      func(*Context) error
 	subcommands map[string]*Command
 	args        []*Argument

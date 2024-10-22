@@ -34,6 +34,7 @@ func main() {
 
 	app.Command("math", func(cmd *gossie.Command) {
 		cmd.Description("Perform mathematical operations")
+		cmd.Flag("verbose", "Enable verbose output").Short('v').Alias("details")
 
 		cmd.Command("add", func(subcmd *gossie.Command) {
 			subcmd.Description("Add two numbers")
