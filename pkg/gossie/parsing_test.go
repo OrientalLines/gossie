@@ -75,7 +75,7 @@ func TestGetArgFields(t *testing.T) {
 		Name    string `gossie:"name"`
 		Verbose bool   `gossie:"verbose"`
 		Count   int    `gossie:"count"`
-		Hidden  string `not-a-gossie-tag`
+		Hidden  string
 		NoTag   string
 	}
 
