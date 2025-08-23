@@ -22,4 +22,6 @@ func main() {
 		fmt.Printf("Hello, %s!\n", c.Name)
 		return nil
 	})
+
+	app.Run()
 }
